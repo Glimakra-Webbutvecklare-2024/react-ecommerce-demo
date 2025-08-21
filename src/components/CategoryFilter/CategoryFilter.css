@@ -1,0 +1,38 @@
+.category-filter {
+  margin-bottom: 2rem;
+}
+
+.category-filter h3 {
+  margin: 0 0 1rem 0;
+  color: #2c3e50;
+  font-size: 1.2rem;
+}
+
+.category-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.category-option {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.category-option:hover {
+  background-color: #f8f9fa;
+}
+
+.category-option input[type="radio"] {
+  margin: 0;
+}
+
+.category-option span {
+  color: #2c3e50;
+  font-size: 0.9rem;
+}
