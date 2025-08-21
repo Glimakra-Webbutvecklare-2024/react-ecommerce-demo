@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import './App.css'
+import Footer from './components/Footer/Footer'
 import Header from './components/Header/Header'
-import Nav from './components/Nav/Nav'
 import Logo from './components/Logo/Logo'
+import Nav from './components/Nav/Nav'
 import ProductList from './components/ProductList/ProductList'
 import Sidebar from './components/Sidebar/Sidebar'
-import Footer from './components/Footer/Footer'
 
 function App() {
   const [searchTerm, setSearchTerm] = useState('');
