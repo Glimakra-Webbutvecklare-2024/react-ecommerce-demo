@@ -25,8 +25,14 @@ function App() {
   // Filtera products med avseende på searchTerm
   const filteredProducts = products.filter(product => { 
                                             const isMatchingTitle = product.title.toLowerCase().includes(searchTerm.toLowerCase());
-                                            const isMatchingCategory = product.category.includes(selectedCategory);
+                                            
+                                            // om selectedCategory är 'all' behöver vi inte 
+                                            // filtrera på categories (eftersom alla ska med)
+                                            if (selectedCategory === 'all') {
+                                              return isMatchingTitle;
+                                            }
 
+                                            const isMatchingCategory = product.category.includes(selectedCategory);
                                             return isMatchingTitle && isMatchingCategory;
                                           });
 
