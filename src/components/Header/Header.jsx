@@ -4,9 +4,9 @@ import Nav from '../Nav/Nav'; // Ensure Nav is imported correctly
 
 const Header = () => {
   return ( 
-    <header className='py-8 px-4 text-center sticky top-0 flex justify-between items-center'>
+    <header className='py-2 px-4 text-center fixed w-full top-0 flex justify-between items-center'>
       <div>
-        <img src="/SVG/Logotype-XARA.svg" className='w-52' />
+        <img src="/SVG/Logotype-XARA.svg" className='w-32' />
       </div>
       <Nav />
     </header>

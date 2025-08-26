@@ -1,12 +1,12 @@
 import React from 'react';
 import ProductCard from '../ProductCard/ProductCard';
-import './ProductList.css';
+// import './ProductList.css';
 
 const ProductList = ({ products = [] }) => {
   return (
-    <div className="product-list">
-      <h2>Our Products</h2>
-      <div className="products-container">
+    <div className="flex-1 p-4">
+      {/* <h2>Our Products</h2> */}
+      <div className="grid grid-cols-4 gap-6">
         {products.length > 0 ? (
           products.map((product) => (
             <ProductCard
@@ -15,6 +15,7 @@ const ProductList = ({ products = [] }) => {
               price={product.price}
               category={product.category}
               image={product.image}
+              productImage={product.productImage}
             />
           ))
         ) : (
