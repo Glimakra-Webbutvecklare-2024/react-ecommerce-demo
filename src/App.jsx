@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
-import Logo from "./components/Logo/Logo";
+// import Logo from "./components/Logo/Logo";
 import ProductList from "./components/ProductList/ProductList";
 import Sidebar from "./components/Sidebar/Sidebar";
 import ProductCarousel from "./components/ProductCarousel/ProductCarousel";
@@ -80,7 +80,8 @@ function App() {
     <>
       <Header />
       {/* <Logo /> */}
-      <HeroSection />
+      {/* <HeroSection /> */}
+      <div className="my-32"></div>
       <ProductCarousel products={allProducts} />
       <div className="flex justify-center my-16">
         <div className="ml-8 border-b w-64 border-black"></div>
