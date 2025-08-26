@@ -23,8 +23,12 @@ function App() {
   ];
 
   // Filtera products med avseende på searchTerm
-  const filteredProducts = products.filter(product => product.title.toLowerCase().includes(searchTerm.toLowerCase()) 
-                                                  && product.category.includes(selectedCategory));
+  const filteredProducts = products.filter(product => { 
+                                            const isMatchingTitle = product.title.toLowerCase().includes(searchTerm.toLowerCase());
+                                            const isMatchingCategory = product.category.includes(selectedCategory);
+
+                                            return isMatchingTitle && isMatchingCategory;
+                                          });
 
 
   const categories = ['all', 'electronics', 'clothing', 'home', 'sports'];
@@ -42,7 +46,7 @@ function App() {
         <h3>Categories</h3>
         <div className="category-options">
           { categories.map(category => (
-            <label className="category-option"><input type="radio" value={category} checked="" name="category" onChange={evt => setSelectedCategory(evt.target.value)} /><span>{ category.toUpperCase() }</span></label>
+            <label className="category-option"><input type="radio" value={category} checked={selectedCategory === category} name="category" onChange={evt => setSelectedCategory(evt.target.value)} /><span>{ category.toUpperCase() }</span></label>
           )) }
         </div>
 
