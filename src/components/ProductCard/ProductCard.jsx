@@ -1,10 +1,10 @@
+import "./ProductCard.css";
 
-
-function ProductCard({title, price, category}) {
+function ProductCard({title, price, category, imageUrl}) {
     return (<div className="product-card">
             <div className="product-image">
                 <div style={{ width: '200px', height: '200px', backgroundColor: 'rgb(240, 240, 240)', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-                📦
+                    <img src={imageUrl} />
                 </div>
             </div>
             <div className="product-info">
