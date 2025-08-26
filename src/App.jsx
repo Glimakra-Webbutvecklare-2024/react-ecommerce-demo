@@ -4,6 +4,7 @@ import Header from "./components/Header/Header";
 import Main from "./components/Main/Main";
 import ProductList from "./components/ProductList/ProductList";
 import SearchInput from './components/SearchInput/SearchInput';
+import CategoryFilter from './components/CategoryFilter/CategoryFilter';
 
 function App() {
   // Vill spara användarens söksträng
@@ -50,12 +51,7 @@ function App() {
         <SearchInput setSearchTerm={setSearchTerm} />
 
         <h3>Categories</h3>
-        <div className="category-options">
-          { categories.map(category => (
-            <label className="category-option"><input type="radio" value={category} checked={selectedCategory === category} name="category" onChange={evt => setSelectedCategory(evt.target.value)} /><span>{ category.toUpperCase() }</span></label>
-          )) }
-        </div>
-
+        <CategoryFilter categories={categories} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory}/>
 
       </aside>
 
