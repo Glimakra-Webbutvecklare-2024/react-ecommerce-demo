@@ -8,50 +8,50 @@ import ProductCarousel from "./components/ProductCarousel/ProductCarousel";
 function App() {
 
   // Sample products data
-  // const allProducts = [
-  //   {
-  //     id: 1,
-  //     title: "Wireless Headphones",
-  //     price: "$99.99",
-  //     category: "electronics",
-  //     productImage: "https://www.kjell.com/globalassets/productimages/898881_60940_01_m045n--_00.jpg?ref=C6C6202FE9&format=jpg&w=1280&h=1280&mode=max"
-  //   },
-  //   { 
-  //     id: 2, 
-  //     title: "Cotton T-Shirt", 
-  //     price: "$24.99", 
-  //     category: "clothing",
-  //     productImage: "https://www.titus-shop.com/cdn/shop/files/salba_tiger_redux_white_vorderansicht.jpg?format=webp&v=1724675045&width=1214"
-  //   },
-  //   { 
-  //     id: 3, 
-  //     title: "JavaScript Guide", 
-  //     price: "$39.99", 
-  //     category: "books",
-  //     productImage: "https://m.media-amazon.com/images/I/61yVFD4iGQL._UF1000,1000_QL80_.jpg"
-  //   },
-  //   { 
-  //     id: 4, 
-  //     title: "Garden Tools Set", 
-  //     price: "$79.99", 
-  //     category: "home",
-  //     productImage: "https://m.media-amazon.com/images/I/61bNJhMmFoL.jpg"
-  //   },
-  //   { 
-  //     id: 5, 
-  //     title: "Running Shoes", 
-  //     price: "$129.99", 
-  //     category: "sports",
-  //     productImage: "https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1743689444-mhl-run-shoes-puma-410-67ee96da42c5e.jpg?crop=1xw:1xh;center,top&resize=980:*" 
-  //   },
-  //   {
-  //     id: 6,
-  //     title: "Smartphone Case",
-  //     price: "$19.99",
-  //     category: "electronics",
-  //     productImage: "https://sfycdn.speedsize.com/19464703-36eb-4c15-80b7-604735fdf8c8/eu.mous.co/cdn/shop/files/G25Launch_HeroMobile012x.jpg?v=1755601669&width=800"
-  //   },
-  // ];
+  const allProducts = [
+    {
+      id: 1,
+      title: "Wireless Headphones",
+      price: "$99.99",
+      category: "electronics",
+      // productImage: "https://www.kjell.com/globalassets/productimages/898881_60940_01_m045n--_00.jpg?ref=C6C6202FE9&format=jpg&w=1280&h=1280&mode=max"
+    },
+    { 
+      id: 2, 
+      title: "Cotton T-Shirt", 
+      price: "$24.99", 
+      category: "clothing",
+      productImage: "https://www.titus-shop.com/cdn/shop/files/salba_tiger_redux_white_vorderansicht.jpg?format=webp&v=1724675045&width=1214"
+    },
+    { 
+      id: 3, 
+      title: "JavaScript Guide", 
+      price: "$39.99", 
+      category: "books",
+      // productImage: "https://m.media-amazon.com/images/I/61yVFD4iGQL._UF1000,1000_QL80_.jpg"
+    },
+    { 
+      id: 4, 
+      title: "Garden Tools Set", 
+      price: "$79.99", 
+      category: "home",
+      productImage: "https://m.media-amazon.com/images/I/61bNJhMmFoL.jpg"
+    },
+    { 
+      id: 5, 
+      title: "Running Shoes", 
+      price: "$129.99", 
+      category: "sports",
+      productImage: "https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1743689444-mhl-run-shoes-puma-410-67ee96da42c5e.jpg?crop=1xw:1xh;center,top&resize=980:*" 
+    },
+    {
+      id: 6,
+      title: "Smartphone Case",
+      price: "$19.99",
+      category: "electronics",
+      productImage: "https://sfycdn.speedsize.com/19464703-36eb-4c15-80b7-604735fdf8c8/eu.mous.co/cdn/shop/files/G25Launch_HeroMobile012x.jpg?v=1755601669&width=800"
+    },
+  ];
 
   
 
@@ -59,7 +59,7 @@ function App() {
     <>
       <Header />
       <HeroSection />
-      <ProductCarousel />
+      <ProductCarousel products={allProducts} />
     </>
   );
 }
