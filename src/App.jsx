@@ -80,7 +80,7 @@ function App() {
     <>
       <Header />
       {/* <Logo /> */}
-      {/* <HeroSection /> */}
+      <HeroSection />
       <div className="my-32"></div>
       <ProductCarousel products={allProducts} />
       <div className="flex justify-center my-16">
