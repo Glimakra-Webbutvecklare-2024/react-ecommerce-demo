@@ -6,7 +6,7 @@ import SearchInput from '../components/SearchInput/SearchInput';
 import CategoryFilter from '../components/CategoryFilter/CategoryFilter';
 import { useParams } from "react-router-dom";
 
-// Uppgift 1:
+// Uppgift 1: DONE
 // använd useParams och routen /products/:category
 // För att hämta produkter baserat på kategorie
 // T.ex /products/beauty ska ge produkter från beauty
@@ -14,7 +14,7 @@ import { useParams } from "react-router-dom";
 // Uppgift 2:
 // Använd api dokumentationen https://dummyjson.com/ för att
 // Hämta alla kategorier med useEffect och fetch
-// spara det state-variabel: categories
+// spara det state-variabel: allCategories
 
 // Uppgift 3:
 // Ändring av kategori på sidan ska automatiskt ladda in nya produkter
@@ -24,18 +24,28 @@ import { useParams } from "react-router-dom";
 
 function Products() {
       // Vill spara användarens söksträng
+      const { category } = useParams();
   // State-varibel
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [selectedCategory, setSelectedCategory] = useState(category || 'beauty');
   const [products, setProducts] = useState([]);
 
-  const {category } = useParams();
+  // allCategories tar över den gamla 'categories' jobb att vara listan av kategorier
+  const [allCategories, setAllCategories] = useState([]);
+
 
   useEffect(() => {
           // om ingen category är angiven använd beauty som default
-          fetch(`https://dummyjson.com/products/category/${category || 'beauty'}`)
+          fetch(`https://dummyjson.com/products/category/${selectedCategory}`)
                   .then(res => res.json())
                   .then(data => setProducts(data.products))
+  }, []);
+
+  useEffect(() => {
+          // om ingen category är angiven använd beauty som default
+          fetch('https://dummyjson.com/products/category-list')
+                  .then(res => res.json())
+                  .then(data => setAllCategories(data))
   }, []);
 
   // Filtera products med avseende på searchTerm endast
@@ -47,8 +57,6 @@ function Products() {
                                           });
 
 
-  const categories = ['all', 'electronics', 'clothing', 'home', 'sports'];
-
     return (<>
     <Main>
 
@@ -57,7 +65,7 @@ function Products() {
         <SearchInput setSearchTerm={setSearchTerm} />
 
         <h3>Categories</h3>
-        <CategoryFilter categories={categories} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory}/>
+        <CategoryFilter categories={allCategories} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory}/>
 
       </aside>
 
