@@ -5,6 +5,22 @@ import ProductList from "../components/ProductList/ProductList";
 import SearchInput from '../components/SearchInput/SearchInput';
 import CategoryFilter from '../components/CategoryFilter/CategoryFilter';
 
+// Uppgift 1:
+// använd useParams och routen /products/:category
+// För att hämta produkter baserat på kategorie
+// T.ex /products/beauty ska ge produkter från beauty
+
+// Uppgift 2:
+// Använd api dokumentationen https://dummyjson.com/ för att
+// Hämta alla kategorier med useEffect och fetch
+// spara det state-variabel: categories
+
+// Uppgift 3:
+// Ändring av kategori på sidan ska automatiskt ladda in nya produkter
+// med angiven kategori
+// T.ex användare skiftar från 'all' till 'beauty' och nya produkter laddas in
+
+
 function Products() {
       // Vill spara användarens söksträng
   // State-varibel
@@ -13,7 +29,7 @@ function Products() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-          fetch('https://dummyjson.com/products')
+          fetch('https://dummyjson.com/products') // denna raden kommer ändras
                   .then(res => res.json())
                   .then(data => setProducts(data.products))
   }, []);
