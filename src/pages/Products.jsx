@@ -11,20 +11,20 @@ import { useParams } from "react-router-dom";
 // För att hämta produkter baserat på kategorie
 // T.ex /products/beauty ska ge produkter från beauty
 
-// Uppgift 2:
+// Uppgift 2: DONE
 // Använd api dokumentationen https://dummyjson.com/ för att
 // Hämta alla kategorier med useEffect och fetch
 // spara det state-variabel: allCategories
 
-// Uppgift 3:
+// Uppgift 3: DONE
 // Ändring av kategori på sidan ska automatiskt ladda in nya produkter
 // med angiven kategori
 // T.ex användare skiftar från 'all' till 'beauty' och nya produkter laddas in
 
 
 function Products() {
-      // Vill spara användarens söksträng
-      const { category } = useParams();
+  // Vill spara användarens söksträng
+  const { category } = useParams();
   // State-varibel
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState(category || 'beauty');
@@ -39,7 +39,7 @@ function Products() {
           fetch(`https://dummyjson.com/products/category/${selectedCategory}`)
                   .then(res => res.json())
                   .then(data => setProducts(data.products))
-  }, []);
+  }, [selectedCategory]);
 
   useEffect(() => {
           // om ingen category är angiven använd beauty som default
