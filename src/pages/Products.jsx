@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useParams, useNavigate } from 'react-router-dom';
 
 import Main from "../components/Main/Main";
 import ProductList from "../components/ProductList/ProductList";
@@ -7,7 +8,7 @@ import CategoryFilter from '../components/CategoryFilter/CategoryFilter';
 
 // Uppgift 1:
 // använd useParams och routen /products/:category
-// För att hämta produkter baserat på kategorie
+// För att hämta produkter baserat på kategori
 // T.ex /products/beauty ska ge produkter från beauty
 
 // Uppgift 2:
@@ -27,12 +28,37 @@ function Products() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [products, setProducts] = useState([]);
+  const [categories, setCategories] = useState(['all']);
 
+  const { category } = useParams();
+  const navigate = useNavigate();
+
+  // Hämta alla kategorier vid mount
   useEffect(() => {
-          fetch('https://dummyjson.com/products') // denna raden kommer ändras
+          fetch('https://dummyjson.com/products/categories')
                   .then(res => res.json())
-                  .then(data => setProducts(data.products))
+                  .then(data => {
+                          const rawList = Array.isArray(data) ? data : [];
+                          const normalized = rawList.map(item => typeof item === 'string' ? item : (item.slug ?? item.name ?? ''))
+                                                    .filter(Boolean);
+                          setCategories(['all', ...normalized]);
+                  })
+                  .catch(() => setCategories(['all']));
   }, []);
+
+  // Reagera på route-param och ladda produkter
+  useEffect(() => {
+          const activeCategory = category ?? 'all';
+          setSelectedCategory(activeCategory);
+
+          const url = activeCategory === 'all'
+                  ? 'https://dummyjson.com/products'
+                  : `https://dummyjson.com/products/category/${encodeURIComponent(activeCategory)}`;
+
+          fetch(url)
+                  .then(res => res.json())
+                  .then(data => setProducts(data.products ?? data))
+  }, [category]);
 
   // Filtera products med avseende på searchTerm
   const filteredProducts = products.filter(product => { 
@@ -49,7 +75,14 @@ function Products() {
                                           });
 
 
-  const categories = ['all', 'electronics', 'clothing', 'home', 'sports'];
+  // När användaren väljer kategori uppdatera URLen
+  useEffect(() => {
+          if (selectedCategory === 'all') {
+                  navigate('/products', { replace: true });
+          } else if (category !== selectedCategory) {
+                  navigate(`/products/${selectedCategory}`, { replace: true });
+          }
+  }, [selectedCategory]);
 
   console.log(products);
     return (<>
