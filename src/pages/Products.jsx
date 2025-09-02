@@ -4,6 +4,7 @@ import Main from "../components/Main/Main";
 import ProductList from "../components/ProductList/ProductList";
 import SearchInput from '../components/SearchInput/SearchInput';
 import CategoryFilter from '../components/CategoryFilter/CategoryFilter';
+import { useParams } from "react-router-dom";
 
 // Uppgift 1:
 // använd useParams och routen /products/:category
@@ -28,36 +29,31 @@ function Products() {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [products, setProducts] = useState([]);
 
+  const {category } = useParams();
+
   useEffect(() => {
-          fetch('https://dummyjson.com/products') // denna raden kommer ändras
+          // om ingen category är angiven använd beauty som default
+          fetch(`https://dummyjson.com/products/category/${category || 'beauty'}`)
                   .then(res => res.json())
                   .then(data => setProducts(data.products))
   }, []);
 
-  // Filtera products med avseende på searchTerm
+  // Filtera products med avseende på searchTerm endast
+  // category filter kommer från APIet numera
   const filteredProducts = products.filter(product => { 
-                                            const isMatchingTitle = product.title.toLowerCase().includes(searchTerm.toLowerCase());
+                                            const isMatchingTitle = product.title.toLowerCase().includes(searchTerm.toLowerCase());                                        
                                             
-                                            // om selectedCategory är 'all' behöver vi inte 
-                                            // filtrera på categories (eftersom alla ska med)
-                                            if (selectedCategory === 'all') {
-                                              return isMatchingTitle;
-                                            }
-
-                                            const isMatchingCategory = product.category.includes(selectedCategory);
-                                            return isMatchingTitle && isMatchingCategory;
+                                            return isMatchingTitle;
                                           });
 
 
   const categories = ['all', 'electronics', 'clothing', 'home', 'sports'];
 
-  console.log(products);
     return (<>
-    <Main a={10}>
+    <Main>
 
       <aside>
         <h2>Filtrera</h2>
-        {/* Vill isolera detta till en egen komponent: SearchInput */}
         <SearchInput setSearchTerm={setSearchTerm} />
 
         <h3>Categories</h3>
