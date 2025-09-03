@@ -6,11 +6,14 @@ import ProductList from "../components/ProductList/ProductList";
 import SearchInput from '../components/SearchInput/SearchInput';
 import CategoryFilter from '../components/CategoryFilter/CategoryFilter';
 
+
+// KLAR
 // Uppgift 1:
 // använd useParams och routen /products/:category
 // För att hämta produkter baserat på kategori
-// T.ex /products/beauty ska ge produkter från beauty
+// T.ex /products/beauty ska ge produkter från beauty 
 
+// KLAR
 // Uppgift 2:
 // Använd api dokumentationen https://dummyjson.com/ för att
 // Hämta alla kategorier med useEffect och fetch
